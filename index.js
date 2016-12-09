@@ -1,6 +1,6 @@
 const { Observable: O } = require('rxjs')
 const plotGraph = require('./lib/plotGraph')
-const { genArr, calculateTotals } = require('./lib/helpers')
+const { genArr, calculateTotals, untilZero } = require('./lib/helpers')
 
 const BINS = 10
 const BALLS = 100
@@ -22,6 +22,7 @@ O.range(0, TRIES)
   .map(bins => Math.max(...bins))
   // sum up each possible maximum
   .reduce(calculateTotals, genArr(BALLS))
+  .map(arr => arr.filter(untilZero()))
   .switchMap(arr => plotGraph(arr))
   .subscribe(
     console.log,
