@@ -2,24 +2,24 @@ const { Observable: O } = require('rxjs')
 const plotGraph = require('./lib/plotGraph')
 const { genArr, calculateTotals } = require('./lib/helpers')
 
-const BUCKETS = 10
+const BINS = 10
 const BALLS = 100
 const TRIES = 100000
 
-const chooseBucket = () =>
-  Math.floor(Math.random() * BUCKETS)
+const chooseBin = () =>
+  Math.floor(Math.random() * BINS)
 
-const runBallsInBuckets = () =>
+const runBallsInBins = () =>
   genArr(BALLS)
-    .map(chooseBucket)
-    .reduce(calculateTotals, genArr(BUCKETS))
+    .map(chooseBin)
+    .reduce(calculateTotals, genArr(BINS))
 
 // 100 tries
 O.range(0, TRIES)
-  // 10 buckets with 100 balls
-  .map(runBallsInBuckets)
-  // get the highest number of balls in a bucket
-  .map(buckets => Math.max(...buckets))
+  // 10 bins with 100 balls
+  .map(runBallsInBins)
+  // get the highest number of balls in a bin
+  .map(bins => Math.max(...bins))
   // sum up each possible maximum
   .reduce(calculateTotals, genArr(BALLS))
   .switchMap(arr => plotGraph(arr))
