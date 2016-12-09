@@ -3,7 +3,7 @@ const plotGraph = require('./lib/plotGraph')
 const { genArr, calculateTotals, untilZero } = require('./lib/helpers')
 
 const BINS = 10
-const BALLS = 100
+const BALLS = 1000
 const TRIES = 100000
 
 const chooseBin = () =>
