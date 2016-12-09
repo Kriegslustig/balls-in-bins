@@ -1,0 +1,12 @@
+{
+  "name": "balls-in-bins",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Luca Nils Schmid <npm@ls7.ch>",
+  "license": "MIT",
+  "dependencies": {
+    "d3": "^4.4.0",
+    "jsdom": "^9.8.3",
+    "rxjs": "^5.0.0-rc.5"
+  }
+}
